@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create Account" />
+    <title>Create Account</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/create_account_styles.css') }}">
+</head>
+
+<body>
+    <header>
+        <img id="logo" alt="FIFA 2026" src="{{ url_for('pictures', filename='fifa world cup 2026 logo.jpg') }}">
+        <h1>Ticket Portal</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">HOME</a></li>
+                <li><a href="{{ url_for('tickets') }}">TICKETS</a></li>
+                <li><a href="{{ url_for('login') }}">LOGIN</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="create-account-container">
+            <img id="create-account-picture"
+                src="{{ url_for('pictures', filename='Cristiano-create-account.jpeg') }}" />
+            <div class="create-account-portal">
+                <h1>Create Account</h1>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                {% for category, message in messages %}
+
+                <p class="error-message">{{ message }}</p>
+
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <form method="POST">
+                    <label for="email-address">Email Address</label>
+                    <input type="email" id="email-address" name="email-address" required><br><br>
+                    <label for="new-username">New Username</label>
+                    <input type="text" id="new-username" name="new-username" required><br><br>
+                    <label for="new-password">New Password</label>
+                    <input type="password" id="new-password" name="new-password" required><br><br>
+                    <label for="retype-password">Retype Password</label>
+                    <input type="password" id="retype-password" name="retype-password" required><br><br>
+                    <button type="submit">Create Account</button>
+                    <p>Already have an account?<br><a href="{{ url_for('login') }}" id="login-again">Click here to
+                            login</a></p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <address class="contact-info">
+                Muhammad Adil Sameer<br />
+                University of British Columbia<br />
+                Vancouver<br />
+                Canada
+            </address>
+
+            <div class="social-media">
+                <a href="https://www.linkedin.com/in/muhammad-adil-sameer/">
+                    <img src="{{ url_for('pictures', filename='Linkedin Icon.png') }}" alt="LinkedIn"
+                        class="social-icon">
+                </a>
+                <a href="https://www.instagram.com/adeeelsameer/">
+                    <img src="{{ url_for('pictures', filename='Instagram Icon.png') }}" alt="Instagram"
+                        class="social-icon">
+                </a>
+                <a href="mailto:adilsameer99@gmail.com">
+                    <img src="{{ url_for('pictures', filename='Gmail Icon.png') }}" alt="Email" class="social-icon">
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+
+</html>
